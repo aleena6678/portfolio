@@ -2,13 +2,13 @@
 
 Welcome to the source code for my personal portfolio website! This project serves as a digital resume and a showcase of my featured work, technical skills, and educational background.
 
-## 🎨 Design Aesthetic
-The site is built with a custom **Dreamy Twilight & Pastel** theme, featuring:
-- 🌄 A dynamic background gradient that transitions from twilight blue to evening sky as you scroll.
-- 🪟 Elegant **Glassmorphism** UI components (frosted glass cards).
-- 🌸 Carefully curated pastel accents (pink, gold, and sage green).
-- 🖋️ Beautiful typography using **Lora** (serif) and **Outfit** (sans-serif).
-- ✨ Smooth CSS animations, floating blobs, and scroll-triggered fade-ins.
+## 🎨 Design Aesthetic: Deep Space Cosmic Theme
+The site features an immersive **Deep Space** cosmic theme:
+- 🌌 **Deep Cosmic Starfield Simulation**: Interactive HTML5 canvas with multi-depth stars, twinkling luminosity, and shooting stars/meteors.
+- 🪟 **Aerospace Glassmorphism**: Frosted deep-space glass cards with starlight borders and glowing accents.
+- 🛠️ **Interactive Skills & Tools Grid**: Over 25 tools and frameworks with direct links to official documentation.
+- ✉️ **Direct Contact Portal**: Interactive messaging form with asynchronous submission handling.
+- 🖋️ **Modern Typography**: Clean typography pairing `Outfit` and `JetBrains Mono`.
 
 ## 🛠️ Tech Stack
 This project is built from scratch entirely with vanilla web technologies. No heavy frameworks!

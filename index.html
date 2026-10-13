@@ -4,18 +4,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aleena Saji - Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Aleena Saji - Software Engineer & Flutter Developer</title>
+  <meta name="description"
+    content="Portfolio of Aleena Saji - Software Engineer and Flutter Developer with Double Bell published on the Google Play Store.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link rel="stylesheet" href="style.css?v=deepsolarclean1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
-  <!-- Animated Background -->
-  <div class="animated-background">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
+  <!-- Deep Space Canvas Simulation -->
+  <canvas id="space-canvas"></canvas>
+
+  <!-- Distant Celestial Nebula Glows -->
+  <div class="nebula-cloud nebula-1" aria-hidden="true"></div>
+  <div class="nebula-cloud nebula-2" aria-hidden="true"></div>
+
+
+
+
 
   <!-- Navbar -->
   <header class="navbar" id="navbar">
@@ -56,12 +67,14 @@
             <p>Hello, I'm</p>
           </div>
           <h1 class="hero-name">Aleena Saji</h1>
-          <h2 class="hero-title gradient-text">Software Engineer</h2>
-          <p class="hero-description">B.Tech Computer Science and Engineering graduate and fresher Software Engineer
-            with strong Flutter and Dart mobile application development skills. Passionate about building modern,
-            responsive, and data-driven applications.</p>
+          <h2 class="hero-title gradient-text">Software Engineer & Flutter Developer</h2>
+          <p class="hero-description">B.Tech Computer Science and Engineering graduate, Software Engineer, and Flutter
+            Developer with <strong>Double Bell</strong> live on the Google Play Store. Passionate about engineering
+            scalable software solutions and high-performance, responsive Flutter applications.</p>
           <div class="hero-buttons">
-            <a href="#projects" class="btn btn-primary">View My Work <i class="fas fa-arrow-right"></i></a>
+            <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
+              class="btn btn-primary play-btn"><i class="fab fa-google-play"></i> Double Bell App</a>
+            <a href="#projects" class="btn btn-outline">Explore Projects <i class="fas fa-arrow-right"></i></a>
             <a href="AleenaSaji_SoftwareEngineer_Resume.pdf" class="btn btn-outline" target="_blank">Download Resume <i
                 class="fas fa-download"></i></a>
           </div>
@@ -74,14 +87,22 @@
         <div class="hero-visual">
           <div class="abstract-shape">
             <div class="shape-inner glass-card">
+              <div class="console-header">
+                <span class="console-dot red"></span>
+                <span class="console-dot yellow"></span>
+                <span class="console-dot green"></span>
+                <span class="console-title">// ORBITAL_PAYLOAD: DEVELOPER_SPEC</span>
+              </div>
               <div class="code-snippet">
                 <p><span class="keyword">const</span> <span class="variable">developer</span> = {</p>
                 <p class="indent">name: <span class="string">"Aleena Saji"</span>,</p>
-                <p class="indent">role: <span class="string">"Software Engineer"</span>,</p>
+                <p class="indent">role: <span class="string">"Software Engineer & Flutter Developer"</span>,</p>
+                <p class="indent">publishedApp: <span class="string">"Double Bell (Google Play)"</span>,</p>
+                <p class="indent">playStoreId: <span class="string">"com.aleenasaji.double_bell"</span>,</p>
                 <p class="indent">skills: [<span class="string">"Flutter"</span>, <span
-                    class="string">"Firebase"</span>, <span class="string">"Python"</span>, <span
-                    class="string">"Machine Learning"</span>],</p>
-                <p class="indent">passion: <span class="string">"Building Ideas"</span></p>
+                    class="string">"Firebase"</span>, <span class="string">"Dart"</span>, <span
+                    class="string">"Python"</span>],</p>
+                <p class="indent">mission: <span class="string">"Building Ideas Beyond Limits"</span></p>
                 <p>};</p>
               </div>
             </div>
@@ -96,9 +117,11 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
           <div class="about-text glass-card">
-            <p>I am a proactive software engineer focusing on Flutter and Dart for mobile applications, alongside a
-              solid foundation in Python, Java, and modern web development. I love building intuitive, performant, and
-              scalable applications, exploring AI/ML, and solving real-world problems.</p>
+            <p>I am a proactive Software Engineer and Flutter Developer, and the creator of <strong>Double
+                Bell</strong>—now live on the Google Play Store. Combining strong computer science fundamentals and
+              software engineering practices with specialized expertise in Flutter, Dart, Python, Java, and modern web
+              development, I am passionate about architecting scalable software solutions and building intuitive,
+              performant applications.</p>
           </div>
           <div class="about-stats">
 
@@ -112,6 +135,11 @@
               <p class="stat-label">Years Coding</p>
             </div>
 
+            <div class="stat-card glass-card">
+              <h3 class="stat-value gradient-text">1</h3>
+              <p class="stat-label">Play Store App</p>
+            </div>
+
           </div>
         </div>
       </div>
@@ -121,70 +149,289 @@
     <section id="skills" class="skills-section">
       <div class="section-container fade-in-section">
         <h2 class="section-title">Technical Skills</h2>
+
+        <!-- Featured Tools & Technologies Showcase -->
+        <div class="tools-showcase">
+          <div class="skills-subheading">
+            <i class="fas fa-tools gradient-text"></i>
+            <h3 class="gradient-text">Core Tools & Frameworks</h3>
+          </div>
+          <p class="skills-subdesc">Primary engineering tools, frameworks, languages, and platforms I leverage to
+            design, build, and deploy production software</p>
+
+          <div class="tools-grid">
+            <a href="https://docs.flutter.dev/" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="Flutter Documentation">
+              <div class="tool-icon"><i class="devicon-flutter-plain colored"></i></div>
+              <span class="tool-name">Flutter</span>
+            </a>
+            <a href="https://dart.dev/guides" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="Dart Documentation">
+              <div class="tool-icon"><i class="devicon-dart-plain colored"></i></div>
+              <span class="tool-name">Dart</span>
+            </a>
+            <a href="https://firebase.google.com/docs" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="Firebase Documentation">
+              <div class="tool-icon"><i class="devicon-firebase-plain colored"></i></div>
+              <span class="tool-name">Firebase</span>
+            </a>
+            <a href="https://play.google.com/console/about/" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="Google Play Console">
+              <div class="tool-icon"><i class="fab fa-google-play" style="color: #34d399;"></i></div>
+              <span class="tool-name">Google Play</span>
+            </a>
+            <a href="https://developer.android.com/docs" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="Android Developers Documentation">
+              <div class="tool-icon"><i class="devicon-android-plain colored"></i></div>
+              <span class="tool-name">Android</span>
+            </a>
+            <a href="https://developer.android.com/studio/intro" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="Android Studio Documentation">
+              <div class="tool-icon"><i class="devicon-androidstudio-plain colored"></i></div>
+              <span class="tool-name">Android Studio</span>
+            </a>
+            <a href="https://code.visualstudio.com/docs" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="Visual Studio Code Documentation">
+              <div class="tool-icon"><i class="devicon-vscode-plain colored"></i></div>
+              <span class="tool-name">VS Code</span>
+            </a>
+            <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="Git Documentation">
+              <div class="tool-icon"><i class="devicon-git-plain colored"></i></div>
+              <span class="tool-name">Git</span>
+            </a>
+            <a href="https://docs.github.com/" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="GitHub Documentation">
+              <div class="tool-icon"><i class="devicon-github-original" style="color: #f8fafc;"></i></div>
+              <span class="tool-name">GitHub</span>
+            </a>
+            <a href="https://docs.python.org/3/" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="Python Documentation">
+              <div class="tool-icon"><i class="devicon-python-plain colored"></i></div>
+              <span class="tool-name">Python</span>
+            </a>
+            <a href="https://docs.oracle.com/en/java/" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="Java Documentation">
+              <div class="tool-icon"><i class="devicon-java-plain colored"></i></div>
+              <span class="tool-name">Java</span>
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="JavaScript Documentation (MDN)">
+              <div class="tool-icon"><i class="devicon-javascript-plain colored"></i></div>
+              <span class="tool-name">JavaScript</span>
+            </a>
+            <a href="https://nodejs.org/en/docs" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="Node.js Documentation">
+              <div class="tool-icon"><i class="devicon-nodejs-plain colored"></i></div>
+              <span class="tool-name">Node.js</span>
+            </a>
+            <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="Express.js Documentation">
+              <div class="tool-icon"><i class="devicon-express-original" style="color: #f1f5f9;"></i></div>
+              <span class="tool-name">Express.js</span>
+            </a>
+            <a href="https://www.mongodb.com/docs/" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="MongoDB Documentation">
+              <div class="tool-icon"><i class="devicon-mongodb-plain colored"></i></div>
+              <span class="tool-name">MongoDB</span>
+            </a>
+            <a href="https://www.postgresql.org/docs/" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="PostgreSQL Documentation">
+              <div class="tool-icon"><i class="devicon-postgresql-plain colored"></i></div>
+              <span class="tool-name">PostgreSQL</span>
+            </a>
+            <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="SQL / MySQL Documentation">
+              <div class="tool-icon"><i class="devicon-mysql-plain colored"></i></div>
+              <span class="tool-name">SQL</span>
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="HTML5 Documentation (MDN)">
+              <div class="tool-icon"><i class="devicon-html5-plain colored"></i></div>
+              <span class="tool-name">HTML5</span>
+            </a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="CSS3 Documentation (MDN)">
+              <div class="tool-icon"><i class="devicon-css3-plain colored"></i></div>
+              <span class="tool-name">CSS3</span>
+            </a>
+            <a href="https://getbootstrap.com/docs/" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="Bootstrap Documentation">
+              <div class="tool-icon"><i class="devicon-bootstrap-plain colored"></i></div>
+              <span class="tool-name">Bootstrap</span>
+            </a>
+            <a href="https://en.cppreference.com/w/c" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="C Reference">
+              <div class="tool-icon"><i class="devicon-c-plain colored"></i></div>
+              <span class="tool-name">C</span>
+            </a>
+            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="C# Documentation (Microsoft)">
+              <div class="tool-icon"><i class="devicon-csharp-plain colored"></i></div>
+              <span class="tool-name">C#</span>
+            </a>
+            <a href="https://www.php.net/docs.php" target="_blank" rel="noopener noreferrer"
+              class="tool-tile glass-card" title="PHP Documentation">
+              <div class="tool-icon"><i class="devicon-php-plain colored"></i></div>
+              <span class="tool-name">PHP</span>
+            </a>
+            <a href="https://docs.streamlit.io/" target="_blank" rel="noopener noreferrer" class="tool-tile glass-card"
+              title="Streamlit Documentation">
+              <div class="tool-icon"><i class="devicon-streamlit-plain colored"></i></div>
+              <span class="tool-name">Streamlit</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Categorized Skills Grid -->
+        <div class="skills-subheading" style="margin-top: 1rem;">
+          <i class="fas fa-layer-group gradient-text"></i>
+          <h3 class="gradient-text">Domain Competencies & Frameworks</h3>
+        </div>
+        <p class="skills-subdesc">Specialized architectural patterns, state management solutions, databases, and AI
+          frameworks</p>
+
         <div class="skills-grid">
 
           <div class="skill-category glass-card">
             <h3 class="category-title gradient-text">Mobile Development</h3>
             <div class="skills-list">
-              <span class="skill-badge">Flutter</span><span class="skill-badge">Dart</span><span
-                class="skill-badge">Android Development</span><span class="skill-badge">Responsive UI</span><span
-                class="skill-badge">Animation</span>
+              <a href="https://docs.flutter.dev/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Flutter Documentation"><i class="devicon-flutter-plain colored"></i> Flutter</a>
+              <a href="https://dart.dev/guides" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Dart Documentation"><i class="devicon-dart-plain colored"></i> Dart</a>
+              <a href="https://developer.android.com/docs" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Android Development"><i class="devicon-android-plain colored"></i> Android Development</a>
+              <a href="https://docs.flutter.dev/ui/layout/responsive/adaptive-responsive" target="_blank"
+                rel="noopener noreferrer" class="skill-badge" title="Responsive UI in Flutter"><i
+                  class="fas fa-mobile-screen" style="color: #38bdf8;"></i> Responsive UI</a>
+              <a href="https://docs.flutter.dev/ui/animations" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="Flutter Animations"><i class="fas fa-wand-magic-sparkles"
+                  style="color: #fbbf24;"></i> Animation</a>
             </div>
           </div>
 
           <div class="skill-category glass-card">
             <h3 class="category-title gradient-text">State Management & App Dev</h3>
             <div class="skills-list">
-              <span class="skill-badge">Riverpod</span><span class="skill-badge">Provider</span><span
-                class="skill-badge">GoRouter</span><span class="skill-badge">Shared Preferences</span><span
-                class="skill-badge">Lottie</span>
+              <a href="https://riverpod.dev/docs/introduction/getting_started" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="Riverpod Documentation"><i class="fas fa-arrows-split-up-and-left"
+                  style="color: #38bdf8;"></i> Riverpod</a>
+              <a href="https://pub.dev/packages/provider" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Provider Documentation"><i class="fas fa-cubes" style="color: #60a5fa;"></i> Provider</a>
+              <a href="https://pub.dev/packages/go_router" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="GoRouter Documentation"><i class="fas fa-route" style="color: #34d399;"></i> GoRouter</a>
+              <a href="https://pub.dev/packages/shared_preferences" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="Shared Preferences"><i class="fas fa-database" style="color: #fbbf24;"></i>
+                Shared Preferences</a>
+              <a href="https://pub.dev/packages/lottie" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Lottie Animations"><i class="fas fa-play" style="color: #f43f5e;"></i> Lottie</a>
             </div>
           </div>
 
           <div class="skill-category glass-card">
             <h3 class="category-title gradient-text">Backend & Databases</h3>
             <div class="skills-list">
-              <span class="skill-badge">Firebase</span><span class="skill-badge">Cloud Firestore</span><span
-                class="skill-badge">REST APIs</span><span class="skill-badge">Node.js</span><span
-                class="skill-badge">Express.js</span><span class="skill-badge">SQL</span><span
-                class="skill-badge">PostgreSQL</span><span class="skill-badge">MongoDB</span>
+              <a href="https://firebase.google.com/docs" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Firebase Documentation"><i class="devicon-firebase-plain colored"></i> Firebase</a>
+              <a href="https://firebase.google.com/docs/firestore" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="Cloud Firestore Documentation"><i class="fas fa-fire"
+                  style="color: #f59e0b;"></i> Cloud Firestore</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Glossary/REST" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="REST APIs"><i class="fas fa-network-wired" style="color: #38bdf8;"></i> REST
+                APIs</a>
+              <a href="https://nodejs.org/en/docs" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Node.js Documentation"><i class="devicon-nodejs-plain colored"></i> Node.js</a>
+              <a href="https://expressjs.com/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Express.js Documentation"><i class="devicon-express-original"></i> Express.js</a>
+              <a href="https://dev.mysql.com/doc/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="SQL Documentation"><i class="devicon-mysql-plain colored"></i> SQL</a>
+              <a href="https://www.postgresql.org/docs/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="PostgreSQL Documentation"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</a>
+              <a href="https://www.mongodb.com/docs/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="MongoDB Documentation"><i class="devicon-mongodb-plain colored"></i> MongoDB</a>
             </div>
           </div>
 
           <div class="skill-category glass-card">
             <h3 class="category-title gradient-text">Programming Languages</h3>
             <div class="skills-list">
-              <span class="skill-badge">Dart</span><span class="skill-badge">Java</span><span
-                class="skill-badge">Python</span><span class="skill-badge">JavaScript</span><span
-                class="skill-badge">C</span><span class="skill-badge">C#</span>
+              <a href="https://dart.dev/guides" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Dart Documentation"><i class="devicon-dart-plain colored"></i> Dart</a>
+              <a href="https://docs.oracle.com/en/java/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Java Documentation"><i class="devicon-java-plain colored"></i> Java</a>
+              <a href="https://docs.python.org/3/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Python Documentation"><i class="devicon-python-plain colored"></i> Python</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
+                rel="noopener noreferrer" class="skill-badge" title="JavaScript Documentation"><i
+                  class="devicon-javascript-plain colored"></i> JavaScript</a>
+              <a href="https://en.cppreference.com/w/c" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="C Reference"><i class="devicon-c-plain colored"></i> C</a>
+              <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="C# Documentation"><i class="devicon-csharp-plain colored"></i> C#</a>
             </div>
           </div>
 
           <div class="skill-category glass-card">
             <h3 class="category-title gradient-text">Web Development</h3>
             <div class="skills-list">
-              <span class="skill-badge">HTML</span><span class="skill-badge">CSS</span><span
-                class="skill-badge">Bootstrap</span><span class="skill-badge">React</span><span
-                class="skill-badge">JavaScript</span><span class="skill-badge">PHP</span>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="HTML Documentation"><i class="devicon-html5-plain colored"></i> HTML</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="CSS Documentation"><i class="devicon-css3-plain colored"></i> CSS</a>
+              <a href="https://getbootstrap.com/docs/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Bootstrap Documentation"><i class="devicon-bootstrap-plain colored"></i> Bootstrap</a>
+              <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="React Documentation"><i class="devicon-react-original colored"></i> React</a>
+              <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank"
+                rel="noopener noreferrer" class="skill-badge" title="JavaScript Documentation"><i
+                  class="devicon-javascript-plain colored"></i> JavaScript</a>
+              <a href="https://www.php.net/docs.php" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="PHP Documentation"><i class="devicon-php-plain colored"></i> PHP</a>
             </div>
           </div>
 
           <div class="skill-category glass-card">
             <h3 class="category-title gradient-text">AI & Machine Learning</h3>
             <div class="skills-list">
-              <span class="skill-badge">Machine Learning</span><span class="skill-badge">Deep Learning</span><span
-                class="skill-badge">Computer Vision</span><span class="skill-badge">Generative AI</span><span
-                class="skill-badge">Streamlit</span><span class="skill-badge">SVM</span><span class="skill-badge">Random
-                Forest</span>
+              <a href="https://scikit-learn.org/stable/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Machine Learning (scikit-learn)"><i class="fas fa-brain" style="color: #c084fc;"></i> Machine
+                Learning</a>
+              <a href="https://www.tensorflow.org/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Deep Learning (TensorFlow)"><i class="fas fa-network-wired" style="color: #f472b6;"></i> Deep
+                Learning</a>
+              <a href="https://opencv.org/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="OpenCV Computer Vision"><i class="fas fa-eye" style="color: #38bdf8;"></i> Computer Vision</a>
+              <a href="https://ai.google.dev/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Google Generative AI"><i class="fas fa-wand-magic-sparkles" style="color: #fbbf24;"></i>
+                Generative AI</a>
+              <a href="https://docs.streamlit.io/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Streamlit Documentation"><i class="devicon-streamlit-plain colored"></i> Streamlit</a>
+              <a href="https://scikit-learn.org/stable/modules/svm.html" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="Support Vector Machines"><i class="fas fa-chart-line"
+                  style="color: #34d399;"></i> SVM</a>
+              <a href="https://scikit-learn.org/stable/modules/ensemble.html#forests-of-randomized-trees"
+                target="_blank" rel="noopener noreferrer" class="skill-badge" title="Random Forest Ensemble"><i
+                  class="fas fa-tree" style="color: #4ade80;"></i> Random Forest</a>
             </div>
           </div>
 
           <div class="skill-category glass-card">
             <h3 class="category-title gradient-text">Tools & Practices</h3>
             <div class="skills-list">
-              <span class="skill-badge">Git</span><span class="skill-badge">GitHub</span><span
-                class="skill-badge">Google Play Console</span><span class="skill-badge">Visual Studio Code</span><span
-                class="skill-badge">Android Studio</span>
+              <a href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Git Documentation"><i class="devicon-git-plain colored"></i> Git</a>
+              <a href="https://docs.github.com/" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="GitHub Documentation"><i class="devicon-github-original" style="color: #f8fafc;"></i> GitHub</a>
+              <a href="https://play.google.com/console/about/" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="Google Play Console Documentation"><i class="fab fa-google-play"
+                  style="color: #34d399;"></i> Google Play Console</a>
+              <a href="https://code.visualstudio.com/docs" target="_blank" rel="noopener noreferrer" class="skill-badge"
+                title="Visual Studio Code Documentation"><i class="devicon-vscode-plain colored"></i> Visual Studio
+                Code</a>
+              <a href="https://developer.android.com/studio/intro" target="_blank" rel="noopener noreferrer"
+                class="skill-badge" title="Android Studio Documentation"><i
+                  class="devicon-androidstudio-plain colored"></i> Android Studio</a>
             </div>
           </div>
 
@@ -202,24 +449,35 @@
             <div class="project-content">
               <div class="project-header">
                 <span class="project-subtitle gradient-text-alt">Flutter Android Application</span>
-                <span class="project-status badge">Google Play Closed Testing</span>
+                <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
+                  class="project-status badge play-badge" style="text-decoration: none;"
+                  title="Open Double Bell on Google Play Store">
+                  <span class="live-dot"></span><i class="fab fa-google-play"></i> Live on Google Play
+                </a>
               </div>
               <h3 class="project-title">Double Bell</h3>
-              <p class="project-description">Independently developed an end-to-end Flutter/Dart Android application for
-                private bus travel, enabling schedule search by start location, destination, and arrival time.</p>
+              <p class="project-description">Independently engineered and launched an end-to-end Flutter & Dart Android
+                application live on the Google Play Store for private bus travel, enabling schedule search by start
+                location, destination, and arrival time.</p>
               <div class="project-features">
                 <ul>
+                  <li>Published on the Google Play Store with full production release management</li>
                   <li>Firebase Authentication, Google Sign-In, and Cloud Firestore integration</li>
                   <li>Riverpod state management & GoRouter navigation</li>
-                  <li>Time-based bus search with schedule display</li>
-                  <li>User profile management and account deletion</li>
-                  <li>Configured Firestore security rules and managed Google Play closed testing</li>
+                  <li>Time-based bus search with real-time schedule display</li>
+                  <li>User profile management, account deletion, and robust Firestore security rules</li>
                 </ul>
               </div>
               <div class="project-tech">
                 <span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span
                   class="tech-tag">Riverpod</span><span class="tech-tag">Firebase</span><span
-                  class="tech-tag">Firestore</span>
+                  class="tech-tag">Firestore</span><span class="tech-tag">Google Play Console</span>
+              </div>
+              <div class="project-links">
+                <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
+                  class="btn btn-primary play-btn">
+                  <i class="fab fa-google-play"></i> Install from Google Play
+                </a>
               </div>
             </div>
           </div>
@@ -382,7 +640,12 @@
       <div class="section-container fade-in-section">
         <h2 class="section-title">Get In Touch</h2>
         <div class="contact-content">
+
           <div class="contact-info glass-card">
+            <h3 class="contact-info-title gradient-text">Let's Connect</h3>
+            <p class="contact-info-desc">Have a software engineering opportunity, a Flutter project, or want to discuss
+              collaboration? Send a message directly or reach out via email or phone.</p>
+
             <div class="info-item">
               <div class="icon-box"><i class="fas fa-envelope"></i></div>
               <div>
@@ -401,10 +664,53 @@
               <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
               <div>
                 <h3>Location</h3>
-                <p>Thodupuzha, Kerala</p>
+                <p>Thodupuzha, Kerala, India</p>
               </div>
             </div>
+
+            <div class="contact-social-pills">
+              <a href="https://github.com/aleena6678" target="_blank" class="contact-pill"><i class="fab fa-github"></i>
+                GitHub</a>
+              <a href="https://www.linkedin.com/in/aleena-saji-3a09b5284" target="_blank" class="contact-pill"><i
+                  class="fab fa-linkedin"></i> LinkedIn</a>
+              <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
+                class="contact-pill"><i class="fab fa-google-play"></i> Double Bell</a>
+            </div>
           </div>
+
+          <!-- Direct Message Form -->
+          <div class="contact-form-card glass-card">
+            <form id="contact-form" class="contact-form">
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="text" id="contact-name" name="name" class="form-input" placeholder="Full name" required
+                    autocomplete="name">
+                </div>
+                <div class="form-group">
+                  <input type="email" id="contact-email" name="email" class="form-input" placeholder="Email address"
+                    required autocomplete="email">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <input type="text" id="contact-subject" name="subject" class="form-input" placeholder="Subject"
+                  required>
+              </div>
+
+              <div class="form-group">
+                <textarea id="contact-message" name="message" class="form-input form-textarea"
+                  placeholder="Your Message" rows="5" required></textarea>
+              </div>
+
+              <button type="submit" id="contact-submit-btn" class="contact-submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                <span>Send Message</span>
+              </button>
+
+              <div id="form-status" class="form-status" style="display: none;"></div>
+            </form>
+          </div>
+
         </div>
       </div>
     </section>
@@ -423,7 +729,7 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=deepsolarclean1"></script>
 </body>
 
 </html>
