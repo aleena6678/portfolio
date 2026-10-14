@@ -12,7 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-  <link rel="stylesheet" href="style.css?v=deepsolarclean1">
+  <link rel="stylesheet" href="style.css?v=astrocursor1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -31,7 +31,6 @@
   <!-- Navbar -->
   <header class="navbar" id="navbar">
     <div class="navbar-container">
-      <a href="#home" class="logo"><span class="gradient-text">&lt;Aleena /&gt;</span></a>
       <nav class="desktop-nav">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -63,14 +62,14 @@
     <section id="home" class="hero-section">
       <div class="section-container hero-container fade-in-section">
         <div class="hero-content">
-          <div class="hero-greeting"><span class="greeting-line"></span>
-            <p>Hello, I'm</p>
+          <div class="hero-greeting">
+            <p><span class="typing-text">Hi, I am</span><span class="typing-cursor" aria-hidden="true"></span></p>
           </div>
           <h1 class="hero-name">Aleena Saji</h1>
           <h2 class="hero-title gradient-text">Software Engineer & Flutter Developer</h2>
           <p class="hero-description">B.Tech Computer Science and Engineering graduate, Software Engineer, and Flutter
-            Developer with <strong>Double Bell</strong> live on the Google Play Store. Passionate about engineering
-            scalable software solutions and high-performance, responsive Flutter applications.</p>
+            Developer passionate about engineering
+            scalable software solutions and high-performance applications.</p>
           <div class="hero-buttons">
             <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
               class="btn btn-primary play-btn"><i class="fab fa-google-play"></i> Double Bell App</a>
@@ -442,117 +441,289 @@
     <!-- Projects -->
     <section id="projects" class="projects-section">
       <div class="section-container fade-in-section">
-        <h2 class="section-title">Featured Work</h2>
-        <div class="projects-grid">
+        <div class="projects-section-header">
+          <div class="projects-header-left">
+            <h2 class="section-title">Featured Work</h2>
+            <div class="project-slide-counter">
+              <span class="counter-current" id="project-counter-current">01</span>
+              <span class="counter-divider">/</span>
+              <span class="counter-total" id="project-counter-total">05</span>
+            </div>
+          </div>
+        </div>
 
-          <div class="project-card glass-card featured">
-            <div class="project-content">
-              <div class="project-header">
-                <span class="project-subtitle gradient-text-alt">Flutter Android Application</span>
-                <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
-                  class="project-status badge play-badge" style="text-decoration: none;"
-                  title="Open Double Bell on Google Play Store">
-                  <span class="live-dot"></span><i class="fab fa-google-play"></i> Live on Google Play
-                </a>
-              </div>
-              <h3 class="project-title">Double Bell</h3>
-              <p class="project-description">Independently engineered and launched an end-to-end Flutter & Dart Android
-                application live on the Google Play Store for private bus travel, enabling schedule search by start
-                location, destination, and arrival time.</p>
-              <div class="project-features">
-                <ul>
-                  <li>Published on the Google Play Store with full production release management</li>
-                  <li>Firebase Authentication, Google Sign-In, and Cloud Firestore integration</li>
-                  <li>Riverpod state management & GoRouter navigation</li>
-                  <li>Time-based bus search with real-time schedule display</li>
-                  <li>User profile management, account deletion, and robust Firestore security rules</li>
-                </ul>
-              </div>
-              <div class="project-tech">
-                <span class="tech-tag">Flutter</span><span class="tech-tag">Dart</span><span
-                  class="tech-tag">Riverpod</span><span class="tech-tag">Firebase</span><span
-                  class="tech-tag">Firestore</span><span class="tech-tag">Google Play Console</span>
-              </div>
-              <div class="project-links">
-                <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
-                  class="btn btn-primary play-btn">
-                  <i class="fab fa-google-play"></i> Install from Google Play
-                </a>
-              </div>
+        <!-- Carousel Wrapper with Flanking Navigation Arrows -->
+        <div class="projects-carousel-wrapper">
+          <button class="projects-side-nav-btn prev-btn" id="projects-prev-btn" aria-label="Previous project"
+            title="Previous Project">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+
+          <div class="projects-single-viewport" id="projects-viewport" tabindex="0" role="region"
+            aria-label="Featured projects showcase">
+            <div class="projects-slides-track" id="projects-track">
+
+              <!-- Slide 0: Face Recognition System (Matching User Reference) -->
+              <article class="project-slide active" data-index="0">
+                <div class="project-card glass-card">
+                  <div class="project-slide-grid">
+                    <div class="project-media">
+                      <div class="project-image-wrapper">
+                        <!-- Top HUD Bar Overlay -->
+                        <div class="project-media-header">
+                          <span class="media-tag">PYTHON</span>
+                          <div class="media-title-group">
+                            <span class="media-main-title">FACIAL RECOGNITION SYSTEM</span>
+                            <span class="media-sub-title">NEXT-GENERATION BIOMETRIC SECURITY</span>
+                          </div>
+                          <span class="media-year">2026</span>
+                        </div>
+                        <img src="images/project-face-recognition.jpg"
+                          alt="Face Recognition System - Biometric Computer Vision Interface" class="project-image"
+                          loading="lazy">
+                      </div>
+                    </div>
+                    <div class="project-content">
+                      <span class="project-category">PYTHON DEVELOPMENT</span>
+                      <h3 class="project-title">Face Recognition System</h3>
+                      <p class="project-description">A Python-based face recognition system that detects and identifies
+                        faces from images or a live camera feed using computer vision and facial recognition techniques.</p>
+                      <div class="project-tech-tags">
+                        <span class="tech-tag-pill">Python</span>
+                        <span class="tech-tag-pill">OpenCV</span>
+                        <span class="tech-tag-pill">Face Recognition</span>
+                        <span class="tech-tag-pill">NumPy</span>
+                      </div>
+                      <div class="project-actions">
+                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                          class="project-action-btn btn-github">
+                          <i class="fab fa-github"></i>
+                          <span>GitHub</span>
+                        </a>
+                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                          class="project-action-btn btn-view">
+                          <span>View Project</span>
+                          <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Slide 1: Double Bell -->
+              <article class="project-slide" data-index="1">
+                <div class="project-card glass-card">
+                  <div class="project-slide-grid">
+                    <div class="project-media">
+                      <div class="project-image-wrapper">
+                        <div class="project-media-header">
+                          <span class="media-tag">FLUTTER</span>
+                          <div class="media-title-group">
+                            <span class="media-main-title">DOUBLE BELL BUS APP</span>
+                            <span class="media-sub-title">LIVE GOOGLE PLAY STORE RELEASE</span>
+                          </div>
+                          <span class="media-year">2025</span>
+                        </div>
+                        <img src="images/project-double-bell.jpg"
+                          alt="Double Bell - Flutter Android Application Interface" class="project-image"
+                          loading="lazy">
+                      </div>
+                    </div>
+                    <div class="project-content">
+                      <span class="project-category">FLUTTER DEVELOPMENT</span>
+                      <h3 class="project-title">Double Bell</h3>
+                      <p class="project-description">Independently engineered and launched an end-to-end Flutter &amp;
+                        Dart Android application live on the Google Play Store for private bus travel, enabling schedule
+                        search and Cloud Firestore integration.</p>
+                      <div class="project-tech-tags">
+                        <span class="tech-tag-pill">Flutter</span>
+                        <span class="tech-tag-pill">Dart</span>
+                        <span class="tech-tag-pill">Riverpod</span>
+                        <span class="tech-tag-pill">Firebase</span>
+                        <span class="tech-tag-pill">Firestore</span>
+                        <span class="tech-tag-pill">Google Play</span>
+                      </div>
+                      <div class="project-actions">
+                        <a href="https://github.com/aleena6678/doublebell_bus_app" target="_blank"
+                          rel="noopener noreferrer" class="project-action-btn btn-github">
+                          <i class="fab fa-github"></i>
+                          <span>GitHub</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
+                          rel="noopener noreferrer" class="project-action-btn btn-view">
+                          <i class="fab fa-google-play"></i>
+                          <span>View on Google Play</span>
+                          <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Slide 2: MammoSafe -->
+              <article class="project-slide" data-index="2">
+                <div class="project-card glass-card">
+                  <div class="project-slide-grid">
+                    <div class="project-media">
+                      <div class="project-image-wrapper">
+                        <div class="project-media-header">
+                          <span class="media-tag">PYTHON / AI</span>
+                          <div class="media-title-group">
+                            <span class="media-main-title">MAMMOSAFE AI DIAGNOSTICS</span>
+                            <span class="media-sub-title">HISTOPATHOLOGICAL CANCER DETECTION</span>
+                          </div>
+                          <span class="media-year">2026</span>
+                        </div>
+                        <img src="images/project-mammosafe.jpg"
+                          alt="MammoSafe - AI Breast Cancer Detection Dashboard" class="project-image" loading="lazy">
+                      </div>
+                    </div>
+                    <div class="project-content">
+                      <span class="project-category">AI &amp; MACHINE LEARNING</span>
+                      <h3 class="project-title">MammoSafe</h3>
+                      <p class="project-description">Developed the histopathological image analysis module for AI-based
+                        breast cancer detection using EfficientNet deep feature extraction, SVM classification, and an
+                        interactive Streamlit dashboard.</p>
+                      <div class="project-tech-tags">
+                        <span class="tech-tag-pill">Python</span>
+                        <span class="tech-tag-pill">Machine Learning</span>
+                        <span class="tech-tag-pill">Computer Vision</span>
+                        <span class="tech-tag-pill">EfficientNet</span>
+                        <span class="tech-tag-pill">SVM</span>
+                        <span class="tech-tag-pill">Streamlit</span>
+                      </div>
+                      <div class="project-actions">
+                        <a href="https://github.com/aleena6678/Breast_Cancer_Detection" target="_blank"
+                          rel="noopener noreferrer" class="project-action-btn btn-github">
+                          <i class="fab fa-github"></i>
+                          <span>GitHub</span>
+                        </a>
+                        <a href="https://github.com/aleena6678/Histopathological-Image-Analysis-BC" target="_blank"
+                          rel="noopener noreferrer" class="project-action-btn btn-view">
+                          <span>View Project</span>
+                          <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Slide 3: AI-Powered Health & Nutrition -->
+              <article class="project-slide" data-index="3">
+                <div class="project-card glass-card">
+                  <div class="project-slide-grid">
+                    <div class="project-media">
+                      <div class="project-image-wrapper">
+                        <div class="project-media-header">
+                          <span class="media-tag">GEMINI AI</span>
+                          <div class="media-title-group">
+                            <span class="media-main-title">HEALTH &amp; NUTRITION AI</span>
+                            <span class="media-sub-title">MULTIMODAL VISION CALORIE ESTIMATION</span>
+                          </div>
+                          <span class="media-year">2026</span>
+                        </div>
+                        <img src="images/project-nutrition.jpg"
+                          alt="AI-Powered Health and Nutrition Analysis Application" class="project-image"
+                          loading="lazy">
+                      </div>
+                    </div>
+                    <div class="project-content">
+                      <span class="project-category">GENERATIVE AI &amp; VISION</span>
+                      <h3 class="project-title">Health &amp; Nutrition Analyzer</h3>
+                      <p class="project-description">Built a Streamlit application that uses Google Gemini Vision API
+                        for multimodal analysis of food images, accurately identifying food items and estimating nutritional
+                        metrics and calorie counts.</p>
+                      <div class="project-tech-tags">
+                        <span class="tech-tag-pill">Python</span>
+                        <span class="tech-tag-pill">Streamlit</span>
+                        <span class="tech-tag-pill">Gemini Vision</span>
+                        <span class="tech-tag-pill">Generative AI</span>
+                        <span class="tech-tag-pill">PIL</span>
+                      </div>
+                      <div class="project-actions">
+                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                          class="project-action-btn btn-github">
+                          <i class="fab fa-github"></i>
+                          <span>GitHub</span>
+                        </a>
+                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                          class="project-action-btn btn-view">
+                          <span>View Project</span>
+                          <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <!-- Slide 4: Multi-Language Invoice Extractor -->
+              <article class="project-slide" data-index="4">
+                <div class="project-card glass-card">
+                  <div class="project-slide-grid">
+                    <div class="project-media">
+                      <div class="project-image-wrapper">
+                        <div class="project-media-header">
+                          <span class="media-tag">DOCUMENT AI</span>
+                          <div class="media-title-group">
+                            <span class="media-main-title">INVOICE INTELLIGENCE EXTRACTOR</span>
+                            <span class="media-sub-title">GEMINI 1.5 FLASH MULTILINGUAL OCR</span>
+                          </div>
+                          <span class="media-year">2026</span>
+                        </div>
+                        <img src="images/project-invoice.jpg"
+                          alt="Multi-Language Invoice Extractor with Gemini 1.5 Flash" class="project-image"
+                          loading="lazy">
+                      </div>
+                    </div>
+                    <div class="project-content">
+                      <span class="project-category">DOCUMENT AI &amp; OCR</span>
+                      <h3 class="project-title">Multi-Language Invoice Extractor</h3>
+                      <p class="project-description">Developed a Streamlit application powered by Gemini 1.5 Flash to
+                        process invoice documents in multiple languages and answer complex natural-language queries about
+                        tabular data and totals.</p>
+                      <div class="project-tech-tags">
+                        <span class="tech-tag-pill">Python</span>
+                        <span class="tech-tag-pill">Streamlit</span>
+                        <span class="tech-tag-pill">Gemini 1.5 Flash</span>
+                        <span class="tech-tag-pill">Document AI</span>
+                      </div>
+                      <div class="project-actions">
+                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                          class="project-action-btn btn-github">
+                          <i class="fab fa-github"></i>
+                          <span>GitHub</span>
+                        </a>
+                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                          class="project-action-btn btn-view">
+                          <span>View Project</span>
+                          <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
             </div>
           </div>
 
-          <div class="project-card glass-card featured">
-            <div class="project-content">
-              <div class="project-header">
-                <span class="project-subtitle gradient-text-alt">Breast Cancer Detection</span>
+          <button class="projects-side-nav-btn next-btn" id="projects-next-btn" aria-label="Next project"
+            title="Next Project">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
 
-              </div>
-              <h3 class="project-title">MammoSafe</h3>
-              <p class="project-description">Developed the histopathological image analysis module as part of a 4-member
-                AI-based breast cancer detection project using Python.</p>
-              <div class="project-features">
-                <ul>
-                  <li>EfficientNet for deep feature extraction from histopathological images</li>
-                  <li>Support Vector Machine (SVM) for classification</li>
-                  <li>Multi-modal fusion approach integrating ultrasound and PET/CT</li>
-                  <li>Streamlit-based web application supporting image upload and real-time prediction</li>
-                </ul>
-              </div>
-              <div class="project-tech">
-                <span class="tech-tag">Python</span><span class="tech-tag">Machine Learning</span><span
-                  class="tech-tag">Computer Vision</span><span class="tech-tag">EfficientNet</span><span
-                  class="tech-tag">SVM</span><span class="tech-tag">Streamlit</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card glass-card ">
-            <div class="project-content">
-              <div class="project-header">
-                <span class="project-subtitle gradient-text-alt">Project</span>
-
-              </div>
-              <h3 class="project-title">AI-Powered Health & Nutrition Analysis App</h3>
-              <p class="project-description">Built a Streamlit application that uses the Gemini Vision API for
-                multimodal analysis of food images, identifying food items and estimating nutritional values.</p>
-              <div class="project-features">
-                <ul>
-                  <li>Image upload and custom user prompts</li>
-                  <li>AI-generated nutritional reports (calories, protein, carbs, fats)</li>
-                  <li>PIL for image processing and python-dotenv for API key management</li>
-                </ul>
-              </div>
-              <div class="project-tech">
-                <span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Google
-                  Gemini Vision API</span><span class="tech-tag">Generative AI</span><span class="tech-tag">PIL</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-card glass-card ">
-            <div class="project-content">
-              <div class="project-header">
-                <span class="project-subtitle gradient-text-alt">Project</span>
-
-              </div>
-              <h3 class="project-title">Multi-Language Invoice Extractor</h3>
-              <p class="project-description">Developed a Streamlit application that uses Gemini 1.5 Flash to process
-                invoice images and answer natural-language queries about their content.</p>
-              <div class="project-features">
-                <ul>
-                  <li>Invoice upload and image preview</li>
-                  <li>Custom queries handling and response generation</li>
-                  <li>API credentials secured via environment variables</li>
-                </ul>
-              </div>
-              <div class="project-tech">
-                <span class="tech-tag">Python</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Google
-                  Gemini 1.5 Flash</span><span class="tech-tag">Generative AI</span>
-              </div>
-            </div>
-          </div>
-
+        <!-- Centered Pagination Dots Below the Card -->
+        <div class="projects-pagination-dots" id="projects-pagination-dots" aria-label="Projects slider pagination">
+          <button class="project-dot active" data-index="0" aria-label="Go to project 1: Face Recognition System"></button>
+          <button class="project-dot" data-index="1" aria-label="Go to project 2: Double Bell"></button>
+          <button class="project-dot" data-index="2" aria-label="Go to project 3: MammoSafe"></button>
+          <button class="project-dot" data-index="3" aria-label="Go to project 4: Health &amp; Nutrition"></button>
+          <button class="project-dot" data-index="4" aria-label="Go to project 5: Invoice Extractor"></button>
         </div>
       </div>
     </section>
@@ -664,7 +835,7 @@
               <div class="icon-box"><i class="fas fa-map-marker-alt"></i></div>
               <div>
                 <h3>Location</h3>
-                <p>Thodupuzha, Kerala, India</p>
+                <p>Kerala, India</p>
               </div>
             </div>
 
@@ -718,9 +889,6 @@
 
   <footer class="footer">
     <div class="footer-container">
-      <div class="footer-logo">
-        <span class="gradient-text">&lt;Aleena /&gt;</span>
-      </div>
       <div class="footer-socials">
         <a href="https://github.com/aleena6678" target="_blank"><i class="fab fa-github"></i></a>
         <a href="https://www.linkedin.com/in/aleena-saji-3a09b5284" target="_blank"><i class="fab fa-linkedin"></i></a>
@@ -729,7 +897,13 @@
     </div>
   </footer>
 
-  <script src="script.js?v=deepsolarclean1"></script>
+  <!-- Tiny Cute Astronaut Custom Cursor -->
+  <div id="astronaut-cursor" class="astronaut-cursor" aria-hidden="true">
+    <img src="astronaut-cursor.png" alt="" class="astronaut-cursor-img">
+    <div class="cursor-starlight-spark"></div>
+  </div>
+
+  <script src="script.js?v=astrocursor1"></script>
 </body>
 
 </html>

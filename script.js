@@ -5,7 +5,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   // ----------------------------------------------------
-  // 1. Deep Space Canvas Simulation
+  // ----------------------------------------------------
+  // 1. Deep Space Canvas Simulation (Astronaut Spacewalk Floating Gait)
   // ----------------------------------------------------
   const canvas = document.getElementById('space-canvas');
   if (!canvas) return;
@@ -21,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initStars();
   });
 
-  // Mouse Tracking with smooth Lerp for Zero-G Parallax
+  // Mouse Tracking with smooth Lerp for Zero-G Look Parallax
   let targetMouseX = 0;
   let targetMouseY = 0;
   let currentMouseX = 0;
@@ -30,21 +31,29 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('mousemove', (e) => {
     targetMouseX = (e.clientX - width / 2) / (width / 2);
     targetMouseY = (e.clientY - height / 2) / (height / 2);
-
-    // Dynamic Visor Glare Parallax
-    const glare = document.getElementById('visor-glare');
-    if (glare) {
-      const glareOffsetX = targetMouseX * 25;
-      const glareOffsetY = targetMouseY * 20;
-      glare.style.transform = `rotate(-12deg) translate(${glareOffsetX}px, ${glareOffsetY}px)`;
-    }
-
-    // Dynamic Horizon Pitch Reticle
-    const crosshair = document.getElementById('hud-crosshair');
-    if (crosshair) {
-      crosshair.style.transform = `translate(calc(-50% + ${targetMouseX * 15}px), calc(-50% + ${targetMouseY * 15}px))`;
-    }
   });
+
+  // Spacewalk Gait Dynamics & Scroll Parallax
+  let targetScrollY = window.scrollY;
+  let smoothScrollY = window.scrollY;
+  let lastScrollY = window.scrollY;
+  let walkStepPhase = 0;
+  let targetMotionFactor = 0;
+  let walkMotionFactor = 0;
+
+  window.addEventListener('scroll', () => {
+    const currentY = window.scrollY;
+    const deltaY = currentY - lastScrollY;
+    lastScrollY = currentY;
+
+    // Advance astronaut walking gait step phase with scroll distance (slow, gentle cadence)
+    const clampedDelta = Math.max(-50, Math.min(50, deltaY));
+    walkStepPhase += Math.abs(clampedDelta) * 0.007;
+    targetMotionFactor = 1.0;
+
+    // Distant Nebula Celestial Parallax (subtle, slow drift)
+    document.documentElement.style.setProperty('--nebula-scroll', `${-currentY * 0.025}px`);
+  }, { passive: true });
 
   // Starfield Configuration
   const STAR_COUNT = Math.min(380, Math.floor((width * height) / 3200));
@@ -125,19 +134,45 @@ document.addEventListener('DOMContentLoaded', () => {
     currentMouseX += (targetMouseX - currentMouseX) * 0.04;
     currentMouseY += (targetMouseY - currentMouseY) * 0.04;
 
-    // Zero-G Autonomous Space Drift
-    const zeroGDriftX = Math.sin(time * 0.2) * 8;
-    const zeroGDriftY = Math.cos(time * 0.15) * 6;
+    // Smooth scroll interpolation for gentle spacewalk traverse
+    targetScrollY = window.scrollY;
+    smoothScrollY += (targetScrollY - smoothScrollY) * 0.05;
+
+    // Spacewalk Gait Dynamics (calm, slowed astronaut footsteps bob & lateral sway)
+    walkMotionFactor += (targetMotionFactor - walkMotionFactor) * 0.10;
+    targetMotionFactor *= 0.90; // decay walking impulse when stopped
+
+    // Buoyant vertical step rise & dip, lateral weight transfer sway (slowed & gentle)
+    const walkBobY = Math.sin(walkStepPhase) * (2.2 * walkMotionFactor);
+    const walkSwayX = Math.cos(walkStepPhase * 0.5) * (1.6 * walkMotionFactor);
+
+    // Slowed Zero-G Autonomous Space Drift combined with spacewalk gait
+    const zeroGDriftX = Math.sin(time * 0.1) * 4 + walkSwayX;
+    const zeroGDriftY = Math.cos(time * 0.08) * 3 + walkBobY;
+
+    // Helmet Visor & Reticle Spacewalk Head-Bob (subtle & calm)
+    const glare = document.getElementById('visor-glare');
+    if (glare) {
+      const glareOffsetX = targetMouseX * 25 + walkSwayX * 1.2;
+      const glareOffsetY = targetMouseY * 20 + walkBobY * 1.2;
+      glare.style.transform = `rotate(-12deg) translate(${glareOffsetX}px, ${glareOffsetY}px)`;
+    }
+
+    const crosshair = document.getElementById('hud-crosshair');
+    if (crosshair) {
+      crosshair.style.transform = `translate(calc(-50% + ${targetMouseX * 15 + walkSwayX}px), calc(-50% + ${targetMouseY * 15 + walkBobY}px))`;
+    }
 
     ctx.clearRect(0, 0, width, height);
 
-    // 1. Draw Stars
+    // 1. Draw Stars with Slowed Spacewalk Multi-Depth Parallax (Crisp points, NO warp lines)
     for (let i = 0; i < stars.length; i++) {
       const s = stars[i];
 
-      // Parallax Shift based on depth
+      // Multi-layer parallax: slowed down for serene, majestic depth
+      const starScrollShift = smoothScrollY * s.depth * 0.08;
       const offsetX = currentMouseX * s.depth * 18 + zeroGDriftX * (s.depth / 2);
-      const offsetY = currentMouseY * s.depth * 18 + zeroGDriftY * (s.depth / 2);
+      const offsetY = currentMouseY * s.depth * 18 + zeroGDriftY * (s.depth / 2) - starScrollShift;
 
       let px = (s.x + offsetX) % width;
       let py = (s.y + offsetY) % height;
@@ -203,16 +238,16 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.fill();
     }
 
-    // 3. Draw Visor Micro-Stardust
+    // 3. Draw Visor Micro-Stardust (gentle drift with spacewalk footsteps)
     for (let i = 0; i < stardust.length; i++) {
       const p = stardust[i];
-      p.x += p.vx;
-      p.y += p.vy;
+      p.x += p.vx + walkSwayX * 0.05;
+      p.y += p.vy - (targetScrollY - smoothScrollY) * 0.02 + walkBobY * 0.04;
 
-      if (p.x < 0) p.x = width;
-      if (p.x > width) p.x = 0;
-      if (p.y < 0) p.y = height;
-      if (p.y > height) p.y = 0;
+      if (p.x < 0) p.x += width;
+      if (p.x > width) p.x -= width;
+      if (p.y < 0) p.y += height;
+      if (p.y > height) p.y -= height;
 
       ctx.beginPath();
       ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
@@ -465,4 +500,287 @@ document.addEventListener('DOMContentLoaded', () => {
       formStatus.style.display = 'block';
     }
   }
+
+  // ----------------------------------------------------
+  // 7. Tiny Astronaut Custom Cursor Controller
+  // ----------------------------------------------------
+  const astronautCursor = document.getElementById('astronaut-cursor');
+  if (astronautCursor) {
+    let isCursorActive = false;
+
+    // Instant tracking: index fingertip (15px from left, 2px from top) pinned to pointer
+    window.addEventListener('mousemove', (e) => {
+      document.body.classList.add('custom-cursor-enabled');
+      if (!isCursorActive) {
+        isCursorActive = true;
+        astronautCursor.classList.add('active');
+        astronautCursor.style.display = 'block';
+      }
+      astronautCursor.style.transform = `translate3d(${e.clientX - 15}px, ${e.clientY - 2}px, 0)`;
+    });
+
+    // Touch support: follow touch position comfortably above finger without disappearing
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches && e.touches[0]) {
+        if (!isCursorActive) {
+          isCursorActive = true;
+          astronautCursor.classList.add('active');
+          astronautCursor.style.display = 'block';
+        }
+        astronautCursor.style.transform = `translate3d(${e.touches[0].clientX - 15}px, ${e.touches[0].clientY - 50}px, 0)`;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      if (e.touches && e.touches[0]) {
+        astronautCursor.style.transform = `translate3d(${e.touches[0].clientX - 15}px, ${e.touches[0].clientY - 50}px, 0)`;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', () => {
+      // Gently keep active or fade after idle on touch devices
+      setTimeout(() => {
+        if (!isCursorActive) {
+          astronautCursor.classList.remove('active');
+        }
+      }, 2500);
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', () => {
+      astronautCursor.classList.remove('active');
+      isCursorActive = false;
+    });
+
+    document.addEventListener('mouseenter', () => {
+      astronautCursor.classList.add('active');
+      isCursorActive = true;
+    });
+
+    document.addEventListener('mousedown', () => {
+      astronautCursor.classList.add('clicking');
+    });
+
+    document.addEventListener('mouseup', () => {
+      astronautCursor.classList.remove('clicking');
+    });
+
+    // Detect clickable elements for interactive hover reaction
+    const clickableSelectors = 'a, button, input, textarea, select, .btn, .glass-card, [role="button"], .play-btn, .mobile-menu-btn, .nav-links a';
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target && e.target.closest && e.target.closest(clickableSelectors)) {
+        astronautCursor.classList.add('hovering');
+      }
+    });
+
+    document.addEventListener('mouseout', (e) => {
+      if (e.target && e.target.closest && e.target.closest(clickableSelectors)) {
+        astronautCursor.classList.remove('hovering');
+      }
+    });
+  }
+
+  // ----------------------------------------------------
+  // 8. Featured Work Single Project Showcase Controller
+  // ----------------------------------------------------
+  const projectsViewport = document.getElementById('projects-viewport');
+  const projectsTrack = document.getElementById('projects-track');
+  const projectsPrevBtn = document.getElementById('projects-prev-btn');
+  const projectsNextBtn = document.getElementById('projects-next-btn');
+  const projectDots = document.querySelectorAll('.project-dot');
+  const counterCurrent = document.getElementById('project-counter-current');
+  const counterTotal = document.getElementById('project-counter-total');
+
+  if (projectsTrack) {
+    const slides = Array.from(projectsTrack.querySelectorAll('.project-slide'));
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+    let autoSlideTimer = null;
+    let isUserInteracting = false;
+
+    if (counterTotal) {
+      counterTotal.textContent = String(totalSlides).padStart(2, '0');
+    }
+
+    function goToSlide(index, animate = true) {
+      if (totalSlides === 0) return;
+
+      // Circular wrap around
+      currentIndex = (index + totalSlides) % totalSlides;
+
+      // Smooth slide transform
+      projectsTrack.style.transition = animate ? 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+      projectsTrack.style.transform = `translateX(-${currentIndex * 100}%)`;
+
+      // Update active classes
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentIndex);
+        slide.setAttribute('aria-hidden', i === currentIndex ? 'false' : 'true');
+      });
+
+      // Update dots
+      projectDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+        dot.setAttribute('aria-current', i === currentIndex ? 'true' : 'false');
+      });
+
+      // Update counter
+      if (counterCurrent) {
+        counterCurrent.textContent = String(currentIndex + 1).padStart(2, '0');
+      }
+    }
+
+    // Prev / Next button navigation
+    if (projectsPrevBtn) {
+      projectsPrevBtn.addEventListener('click', () => {
+        pauseAutoSlideTemporarily();
+        goToSlide(currentIndex - 1);
+      });
+    }
+
+    if (projectsNextBtn) {
+      projectsNextBtn.addEventListener('click', () => {
+        pauseAutoSlideTemporarily();
+        goToSlide(currentIndex + 1);
+      });
+    }
+
+    // Dot indicators navigation
+    projectDots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const targetIndex = parseInt(dot.getAttribute('data-index'), 10);
+        if (!isNaN(targetIndex)) {
+          pauseAutoSlideTemporarily();
+          goToSlide(targetIndex);
+        }
+      });
+    });
+
+    // Touch Swipe Gestures
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+
+    if (projectsViewport) {
+      projectsViewport.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+        isUserInteracting = true;
+      }, { passive: true });
+
+      projectsViewport.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        touchEndY = e.changedTouches[0].screenY;
+        handleSwipeGesture();
+        pauseAutoSlideTemporarily();
+      }, { passive: true });
+
+      // Keyboard navigation (Left / Right Arrow)
+      projectsViewport.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          pauseAutoSlideTemporarily();
+          goToSlide(currentIndex - 1);
+        } else if (e.key === 'ArrowRight') {
+          pauseAutoSlideTemporarily();
+          goToSlide(currentIndex + 1);
+        }
+      });
+
+      // Pause auto-sliding when hovering
+      projectsViewport.addEventListener('mouseenter', () => {
+        isUserInteracting = true;
+      });
+      projectsViewport.addEventListener('mouseleave', () => {
+        isUserInteracting = false;
+      });
+    }
+
+    function handleSwipeGesture() {
+      const diffX = touchEndX - touchStartX;
+      const diffY = touchEndY - touchStartY;
+      if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 40) {
+        if (diffX < 0) {
+          goToSlide(currentIndex + 1); // Swipe left -> Next project
+        } else {
+          goToSlide(currentIndex - 1); // Swipe right -> Previous project
+        }
+      }
+    }
+
+    // Subtle gentle auto-rotation every 7 seconds when idle
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideTimer = setInterval(() => {
+        if (!isUserInteracting) {
+          goToSlide(currentIndex + 1);
+        }
+      }, 7000);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+
+    let pauseTimeout = null;
+    function pauseAutoSlideTemporarily(ms = 8000) {
+      isUserInteracting = true;
+      if (pauseTimeout) clearTimeout(pauseTimeout);
+      pauseTimeout = setTimeout(() => {
+        isUserInteracting = false;
+      }, ms);
+    }
+
+    // Initialize slide 0
+    goToSlide(0, false);
+    startAutoSlide();
+  }
+
+  // ----------------------------------------------------
+  // 9. Hero Greeting Typewriter Animation
+  // ----------------------------------------------------
+  const typingElement = document.querySelector('.hero-greeting .typing-text');
+  if (typingElement) {
+    const textToType = "Hello, I'm";
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 120;
+    const deleteSpeed = 65;
+    const holdFullTime = 4000;
+    const holdEmptyTime = 600;
+
+    function typeLoop() {
+      if (!isDeleting) {
+        charIndex++;
+        typingElement.textContent = textToType.slice(0, charIndex);
+
+        if (charIndex === textToType.length) {
+          isDeleting = true;
+          setTimeout(typeLoop, holdFullTime);
+          return;
+        }
+        setTimeout(typeLoop, typingSpeed + (Math.random() * 30 - 15));
+      } else {
+        charIndex--;
+        typingElement.textContent = textToType.slice(0, charIndex);
+
+        if (charIndex === 0) {
+          isDeleting = false;
+          setTimeout(typeLoop, holdEmptyTime);
+          return;
+        }
+        setTimeout(typeLoop, deleteSpeed);
+      }
+    }
+
+    // Start typing on page load after a brief initial pause
+    setTimeout(() => {
+      typingElement.textContent = '';
+      typeLoop();
+    }, 450);
+  }
 });
+
