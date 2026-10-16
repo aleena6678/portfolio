@@ -386,24 +386,61 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const mobileNav = document.getElementById('mobile-nav');
 
+  function closeMobileNav() {
+    if (mobileNav && mobileMenuBtn) {
+      mobileNav.style.display = 'none';
+      mobileNav.classList.remove('open');
+      mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      mobileMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  function openMobileNav() {
+    if (mobileNav && mobileMenuBtn) {
+      mobileNav.style.display = 'block';
+      mobileNav.classList.add('open');
+      mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+      mobileMenuBtn.setAttribute('aria-expanded', 'true');
+    }
+  }
+
   if (mobileMenuBtn && mobileNav) {
-    mobileMenuBtn.addEventListener('click', () => {
-      const isHidden = mobileNav.style.display === 'none' || mobileNav.style.display === '';
-      if (isHidden) {
-        mobileNav.style.display = 'block';
-        mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isClosed = mobileNav.style.display === 'none' || mobileNav.style.display === '';
+      if (isClosed) {
+        openMobileNav();
       } else {
-        mobileNav.style.display = 'none';
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        closeMobileNav();
       }
     });
 
     const mobileLinks = mobileNav.querySelectorAll('a');
     mobileLinks.forEach(link => {
       link.addEventListener('click', () => {
-        mobileNav.style.display = 'none';
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+        closeMobileNav();
       });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileNav.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        closeMobileNav();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileNav();
+      }
+    });
+
+    // Reset on window resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        closeMobileNav();
+      }
     });
   }
 
@@ -727,6 +764,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let pauseTimeout = null;
     function pauseAutoSlideTemporarily(ms = 8000) {
+      if (firstProjectTimer) {
+        clearTimeout(firstProjectTimer);
+        firstProjectTimer = null;
+        hasTriggeredFirstView = true;
+      }
       isUserInteracting = true;
       if (pauseTimeout) clearTimeout(pauseTimeout);
       pauseTimeout = setTimeout(() => {
@@ -734,9 +776,60 @@ document.addEventListener('DOMContentLoaded', () => {
       }, ms);
     }
 
-    // Initialize slide 0
+    // Initialize slide 0 (Double Bell)
     goToSlide(0, false);
-    startAutoSlide();
+
+    // When recruiter scrolls to Featured Work, wait on Double Bell for ~5.5s so they can understand it, then scroll to project 2
+    const projectsSection = document.getElementById('projects');
+    let hasTriggeredFirstView = false;
+    let firstProjectTimer = null;
+
+    function handleProjectsInView() {
+      if (!hasTriggeredFirstView) {
+        hasTriggeredFirstView = true;
+        goToSlide(0, false); // Ensure recruiter starts at Double Bell
+
+        firstProjectTimer = setTimeout(() => {
+          if (!isUserInteracting) {
+            goToSlide(1, true); // Smoothly slide to the second project
+            startAutoSlide();   // Resume gentle rotation for subsequent projects
+          } else {
+            startAutoSlide();
+          }
+        }, 5500);
+      } else {
+        startAutoSlide();
+      }
+    }
+
+    function handleProjectsOutOfView() {
+      stopAutoSlide();
+      if (firstProjectTimer && !hasTriggeredFirstView) {
+        clearTimeout(firstProjectTimer);
+        firstProjectTimer = null;
+      }
+    }
+
+    if (projectsSection && 'IntersectionObserver' in window) {
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            handleProjectsInView();
+          } else {
+            handleProjectsOutOfView();
+          }
+        });
+      }, {
+        threshold: 0.25
+      });
+
+      sectionObserver.observe(projectsSection);
+    } else {
+      setTimeout(() => {
+        goToSlide(1, true);
+        startAutoSlide();
+      }, 5500);
+    }
   }
 
   // ----------------------------------------------------
@@ -744,7 +837,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ----------------------------------------------------
   const typingElement = document.querySelector('.hero-greeting .typing-text');
   if (typingElement) {
-    const textToType = "Hello, I'm";
+    const textToType = (typingElement.textContent && typingElement.textContent.trim()) ? typingElement.textContent.trim() : "Hi, I am";
     let charIndex = 0;
     let isDeleting = false;
     const typingSpeed = 120;
@@ -781,6 +874,220 @@ document.addEventListener('DOMContentLoaded', () => {
       typingElement.textContent = '';
       typeLoop();
     }, 450);
+  }
+
+  // ----------------------------------------------------
+  // 10. Developer Spec Terminal Code Typewriter Animation
+  // ----------------------------------------------------
+  const codeTerminal = document.getElementById('code-snippet-terminal') || document.querySelector('.code-snippet');
+  if (codeTerminal) {
+    const codeLines = [
+      {
+        indent: false,
+        tokens: [
+          { text: 'const', class: 'keyword' },
+          { text: ' ' },
+          { text: 'developer', class: 'variable' },
+          { text: ' = {' }
+        ]
+      },
+      {
+        indent: true,
+        tokens: [
+          { text: 'name: ' },
+          { text: '"Aleena Saji"', class: 'string' },
+          { text: ',' }
+        ]
+      },
+      {
+        indent: true,
+        tokens: [
+          { text: 'role: ' },
+          { text: '"Software Engineer & Flutter Developer"', class: 'string' },
+          { text: ',' }
+        ]
+      },
+      {
+        indent: true,
+        tokens: [
+          { text: 'publishedApp: ' },
+          { text: '"Double Bell (Google Play)"', class: 'string' },
+          { text: ',' }
+        ]
+      },
+      {
+        indent: true,
+        tokens: [
+          { text: 'playStoreId: ' },
+          { text: '"com.aleenasaji.double_bell"', class: 'string' },
+          { text: ',' }
+        ]
+      },
+      {
+        indent: true,
+        tokens: [
+          { text: 'skills: [' },
+          { text: '"Flutter"', class: 'string' },
+          { text: ', ' },
+          { text: '"Firebase"', class: 'string' },
+          { text: ', ' },
+          { text: '"Dart"', class: 'string' },
+          { text: ', ' },
+          { text: '"Python"', class: 'string' },
+          { text: ', ' },
+          { text: '"Java"', class: 'string' },
+          { text: '],' }
+        ]
+      },
+      {
+        indent: true,
+        tokens: [
+          { text: 'mission: ' },
+          { text: '"Building Ideas Beyond Limits"', class: 'string' }
+        ]
+      },
+      {
+        indent: false,
+        tokens: [
+          { text: '};' }
+        ]
+      }
+    ];
+
+    let typingTimer = null;
+    let isTyping = false;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function renderStaticCode() {
+      codeTerminal.innerHTML = '';
+      codeLines.forEach((line) => {
+        const p = document.createElement('p');
+        if (line.indent) p.className = 'indent';
+        line.tokens.forEach((t) => {
+          if (t.class) {
+            const span = document.createElement('span');
+            span.className = t.class;
+            span.textContent = t.text;
+            p.appendChild(span);
+          } else {
+            p.appendChild(document.createTextNode(t.text));
+          }
+        });
+        codeTerminal.appendChild(p);
+      });
+      const cursor = document.createElement('span');
+      cursor.className = 'code-cursor';
+      cursor.setAttribute('aria-hidden', 'true');
+      const lastP = codeTerminal.lastElementChild;
+      if (lastP) lastP.appendChild(cursor);
+    }
+
+    function typeCodeSnippet() {
+      if (prefersReducedMotion) {
+        renderStaticCode();
+        return;
+      }
+
+      if (isTyping) return;
+      isTyping = true;
+      if (typingTimer) clearTimeout(typingTimer);
+
+      codeTerminal.innerHTML = '';
+
+      const cursor = document.createElement('span');
+      cursor.className = 'code-cursor';
+      cursor.setAttribute('aria-hidden', 'true');
+
+      let lineIdx = 0;
+      let tokenIdx = 0;
+      let charIdx = 0;
+      let currentLineEl = null;
+      let currentTokenEl = null;
+
+      function startLine() {
+        if (lineIdx >= codeLines.length) {
+          if (currentLineEl) currentLineEl.appendChild(cursor);
+          isTyping = false;
+          return;
+        }
+
+        const line = codeLines[lineIdx];
+        currentLineEl = document.createElement('p');
+        if (line.indent) currentLineEl.className = 'indent';
+        currentLineEl.appendChild(cursor);
+        codeTerminal.appendChild(currentLineEl);
+
+        tokenIdx = 0;
+        charIdx = 0;
+        currentTokenEl = null;
+        typeChar();
+      }
+
+      function typeChar() {
+        const line = codeLines[lineIdx];
+        if (tokenIdx >= line.tokens.length) {
+          lineIdx++;
+          typingTimer = setTimeout(startLine, 130);
+          return;
+        }
+
+        const token = line.tokens[tokenIdx];
+        if (!currentTokenEl) {
+          if (token.class) {
+            currentTokenEl = document.createElement('span');
+            currentTokenEl.className = token.class;
+            currentLineEl.insertBefore(currentTokenEl, cursor);
+          } else {
+            currentTokenEl = document.createTextNode('');
+            currentLineEl.insertBefore(currentTokenEl, cursor);
+          }
+        }
+
+        if (charIdx < token.text.length) {
+          const char = token.text[charIdx];
+          if (token.class) {
+            currentTokenEl.textContent += char;
+          } else {
+            currentTokenEl.nodeValue += char;
+          }
+          charIdx++;
+
+          let delay = 34 + Math.random() * 12;
+          if (char === ',' || char === ':' || char === '{') {
+            delay += 55;
+          }
+          typingTimer = setTimeout(typeChar, delay);
+        } else {
+          tokenIdx++;
+          charIdx = 0;
+          currentTokenEl = null;
+          typeChar();
+        }
+      }
+
+      startLine();
+    }
+
+    // Start typing after initial load pause (600ms)
+    setTimeout(typeCodeSnippet, 600);
+
+    // Replay on button click or console card click
+    const replayBtn = document.getElementById('console-replay-btn');
+    if (replayBtn) {
+      replayBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        typeCodeSnippet();
+      });
+    }
+
+    const consoleShape = document.querySelector('.abstract-shape');
+    if (consoleShape) {
+      consoleShape.addEventListener('click', () => {
+        if (!isTyping) {
+          typeCodeSnippet();
+        }
+      });
+    }
   }
 });
 

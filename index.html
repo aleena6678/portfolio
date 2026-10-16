@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Aleena Saji - Software Engineer & Flutter Developer</title>
   <meta name="description"
     content="Portfolio of Aleena Saji - Software Engineer and Flutter Developer with Double Bell published on the Google Play Store.">
@@ -12,7 +12,7 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-  <link rel="stylesheet" href="style.css?v=astrocursor1">
+  <link rel="stylesheet" href="style.css?v=release2">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -31,6 +31,10 @@
   <!-- Navbar -->
   <header class="navbar" id="navbar">
     <div class="navbar-container">
+      <a href="#home" class="logo" aria-label="Aleena Saji Home">
+        <span class="logo-symbol">&lt;</span><span class="gradient-text">Aleena's portfolio</span><span
+          class="logo-symbol">&gt;</span>
+      </a>
       <nav class="desktop-nav">
         <ul>
           <li><a href="#home">Home</a></li>
@@ -41,7 +45,7 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
-      <button class="mobile-menu-btn" id="mobile-menu-btn">
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -72,7 +76,7 @@
             scalable software solutions and high-performance applications.</p>
           <div class="hero-buttons">
             <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
-              class="btn btn-primary play-btn"><i class="fab fa-google-play"></i> Double Bell App</a>
+              class="btn btn-primary play-btn"><i class="fab fa-google-play"></i> Check out my app on Play Store</a>
             <a href="#projects" class="btn btn-outline">Explore Projects <i class="fas fa-arrow-right"></i></a>
             <a href="AleenaSaji_SoftwareEngineer_Resume.pdf" class="btn btn-outline" target="_blank">Download Resume <i
                 class="fas fa-download"></i></a>
@@ -91,8 +95,12 @@
                 <span class="console-dot yellow"></span>
                 <span class="console-dot green"></span>
                 <span class="console-title">// ORBITAL_PAYLOAD: DEVELOPER_SPEC</span>
+                <button class="console-replay-btn" id="console-replay-btn" aria-label="Replay code typing"
+                  title="Replay code typing">
+                  <i class="fas fa-rotate-right"></i>
+                </button>
               </div>
-              <div class="code-snippet">
+              <div class="code-snippet" id="code-snippet-terminal">
                 <p><span class="keyword">const</span> <span class="variable">developer</span> = {</p>
                 <p class="indent">name: <span class="string">"Aleena Saji"</span>,</p>
                 <p class="indent">role: <span class="string">"Software Engineer & Flutter Developer"</span>,</p>
@@ -100,7 +108,7 @@
                 <p class="indent">playStoreId: <span class="string">"com.aleenasaji.double_bell"</span>,</p>
                 <p class="indent">skills: [<span class="string">"Flutter"</span>, <span
                     class="string">"Firebase"</span>, <span class="string">"Dart"</span>, <span
-                    class="string">"Python"</span>],</p>
+                    class="string">"Python"</span>, <span class="string">"Java"</span>],</p>
                 <p class="indent">mission: <span class="string">"Building Ideas Beyond Limits"</span></p>
                 <p>};</p>
               </div>
@@ -130,8 +138,8 @@
             </div>
 
             <div class="stat-card glass-card">
-              <h3 class="stat-value gradient-text">4+</h3>
-              <p class="stat-label">Years Coding</p>
+              <h3 class="stat-value gradient-text">10+</h3>
+              <p class="stat-label">Projects</p>
             </div>
 
             <div class="stat-card glass-card">
@@ -441,16 +449,7 @@
     <!-- Projects -->
     <section id="projects" class="projects-section">
       <div class="section-container fade-in-section">
-        <div class="projects-section-header">
-          <div class="projects-header-left">
-            <h2 class="section-title">Featured Work</h2>
-            <div class="project-slide-counter">
-              <span class="counter-current" id="project-counter-current">01</span>
-              <span class="counter-divider">/</span>
-              <span class="counter-total" id="project-counter-total">05</span>
-            </div>
-          </div>
-        </div>
+        <h2 class="section-title">Featured Work</h2>
 
         <!-- Carousel Wrapper with Flanking Navigation Arrows -->
         <div class="projects-carousel-wrapper">
@@ -463,56 +462,8 @@
             aria-label="Featured projects showcase">
             <div class="projects-slides-track" id="projects-track">
 
-              <!-- Slide 0: Face Recognition System (Matching User Reference) -->
+              <!-- Slide 0: Double Bell (Flagship Project) -->
               <article class="project-slide active" data-index="0">
-                <div class="project-card glass-card">
-                  <div class="project-slide-grid">
-                    <div class="project-media">
-                      <div class="project-image-wrapper">
-                        <!-- Top HUD Bar Overlay -->
-                        <div class="project-media-header">
-                          <span class="media-tag">PYTHON</span>
-                          <div class="media-title-group">
-                            <span class="media-main-title">FACIAL RECOGNITION SYSTEM</span>
-                            <span class="media-sub-title">NEXT-GENERATION BIOMETRIC SECURITY</span>
-                          </div>
-                          <span class="media-year">2026</span>
-                        </div>
-                        <img src="images/project-face-recognition.jpg"
-                          alt="Face Recognition System - Biometric Computer Vision Interface" class="project-image"
-                          loading="lazy">
-                      </div>
-                    </div>
-                    <div class="project-content">
-                      <span class="project-category">PYTHON DEVELOPMENT</span>
-                      <h3 class="project-title">Face Recognition System</h3>
-                      <p class="project-description">A Python-based face recognition system that detects and identifies
-                        faces from images or a live camera feed using computer vision and facial recognition techniques.</p>
-                      <div class="project-tech-tags">
-                        <span class="tech-tag-pill">Python</span>
-                        <span class="tech-tag-pill">OpenCV</span>
-                        <span class="tech-tag-pill">Face Recognition</span>
-                        <span class="tech-tag-pill">NumPy</span>
-                      </div>
-                      <div class="project-actions">
-                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
-                          class="project-action-btn btn-github">
-                          <i class="fab fa-github"></i>
-                          <span>GitHub</span>
-                        </a>
-                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
-                          class="project-action-btn btn-view">
-                          <span>View Project</span>
-                          <i class="fas fa-arrow-up-right-from-square"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </article>
-
-              <!-- Slide 1: Double Bell -->
-              <article class="project-slide" data-index="1">
                 <div class="project-card glass-card">
                   <div class="project-slide-grid">
                     <div class="project-media">
@@ -550,8 +501,8 @@
                           <i class="fab fa-github"></i>
                           <span>GitHub</span>
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell" target="_blank"
-                          rel="noopener noreferrer" class="project-action-btn btn-view">
+                        <a href="https://play.google.com/store/apps/details?id=com.aleenasaji.double_bell"
+                          target="_blank" rel="noopener noreferrer" class="project-action-btn btn-view">
                           <i class="fab fa-google-play"></i>
                           <span>View on Google Play</span>
                           <i class="fas fa-arrow-up-right-from-square"></i>
@@ -562,8 +513,8 @@
                 </div>
               </article>
 
-              <!-- Slide 2: MammoSafe -->
-              <article class="project-slide" data-index="2">
+              <!-- Slide 1: MammoSafe -->
+              <article class="project-slide" data-index="1">
                 <div class="project-card glass-card">
                   <div class="project-slide-grid">
                     <div class="project-media">
@@ -576,8 +527,8 @@
                           </div>
                           <span class="media-year">2026</span>
                         </div>
-                        <img src="images/project-mammosafe.jpg"
-                          alt="MammoSafe - AI Breast Cancer Detection Dashboard" class="project-image" loading="lazy">
+                        <img src="images/project-mammosafe.jpg" alt="MammoSafe - AI Breast Cancer Detection Dashboard"
+                          class="project-image" loading="lazy">
                       </div>
                     </div>
                     <div class="project-content">
@@ -600,19 +551,14 @@
                           <i class="fab fa-github"></i>
                           <span>GitHub</span>
                         </a>
-                        <a href="https://github.com/aleena6678/Histopathological-Image-Analysis-BC" target="_blank"
-                          rel="noopener noreferrer" class="project-action-btn btn-view">
-                          <span>View Project</span>
-                          <i class="fas fa-arrow-up-right-from-square"></i>
-                        </a>
                       </div>
                     </div>
                   </div>
                 </div>
               </article>
 
-              <!-- Slide 3: AI-Powered Health & Nutrition -->
-              <article class="project-slide" data-index="3">
+              <!-- Slide 2: AI-Powered Health & Nutrition -->
+              <article class="project-slide" data-index="2">
                 <div class="project-card glass-card">
                   <div class="project-slide-grid">
                     <div class="project-media">
@@ -634,7 +580,8 @@
                       <span class="project-category">GENERATIVE AI &amp; VISION</span>
                       <h3 class="project-title">Health &amp; Nutrition Analyzer</h3>
                       <p class="project-description">Built a Streamlit application that uses Google Gemini Vision API
-                        for multimodal analysis of food images, accurately identifying food items and estimating nutritional
+                        for multimodal analysis of food images, accurately identifying food items and estimating
+                        nutritional
                         metrics and calorie counts.</p>
                       <div class="project-tech-tags">
                         <span class="tech-tag-pill">Python</span>
@@ -644,15 +591,10 @@
                         <span class="tech-tag-pill">PIL</span>
                       </div>
                       <div class="project-actions">
-                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                        <a href="https://github.com/aleena6678/Health-and-Nutrition-Analayser" target="_blank" rel="noopener noreferrer"
                           class="project-action-btn btn-github">
                           <i class="fab fa-github"></i>
                           <span>GitHub</span>
-                        </a>
-                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
-                          class="project-action-btn btn-view">
-                          <span>View Project</span>
-                          <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                       </div>
                     </div>
@@ -660,8 +602,8 @@
                 </div>
               </article>
 
-              <!-- Slide 4: Multi-Language Invoice Extractor -->
-              <article class="project-slide" data-index="4">
+              <!-- Slide 3: Multi-Language Invoice Extractor -->
+              <article class="project-slide" data-index="3">
                 <div class="project-card glass-card">
                   <div class="project-slide-grid">
                     <div class="project-media">
@@ -683,7 +625,8 @@
                       <span class="project-category">DOCUMENT AI &amp; OCR</span>
                       <h3 class="project-title">Multi-Language Invoice Extractor</h3>
                       <p class="project-description">Developed a Streamlit application powered by Gemini 1.5 Flash to
-                        process invoice documents in multiple languages and answer complex natural-language queries about
+                        process invoice documents in multiple languages and answer complex natural-language queries
+                        about
                         tabular data and totals.</p>
                       <div class="project-tech-tags">
                         <span class="tech-tag-pill">Python</span>
@@ -692,15 +635,10 @@
                         <span class="tech-tag-pill">Document AI</span>
                       </div>
                       <div class="project-actions">
-                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
+                        <a href="https://github.com/aleena6678/Multi-Language-Invoice-Extractor" target="_blank" rel="noopener noreferrer"
                           class="project-action-btn btn-github">
                           <i class="fab fa-github"></i>
                           <span>GitHub</span>
-                        </a>
-                        <a href="https://github.com/aleena6678" target="_blank" rel="noopener noreferrer"
-                          class="project-action-btn btn-view">
-                          <span>View Project</span>
-                          <i class="fas fa-arrow-up-right-from-square"></i>
                         </a>
                       </div>
                     </div>
@@ -719,11 +657,10 @@
 
         <!-- Centered Pagination Dots Below the Card -->
         <div class="projects-pagination-dots" id="projects-pagination-dots" aria-label="Projects slider pagination">
-          <button class="project-dot active" data-index="0" aria-label="Go to project 1: Face Recognition System"></button>
-          <button class="project-dot" data-index="1" aria-label="Go to project 2: Double Bell"></button>
-          <button class="project-dot" data-index="2" aria-label="Go to project 3: MammoSafe"></button>
-          <button class="project-dot" data-index="3" aria-label="Go to project 4: Health &amp; Nutrition"></button>
-          <button class="project-dot" data-index="4" aria-label="Go to project 5: Invoice Extractor"></button>
+          <button class="project-dot active" data-index="0" aria-label="Go to project 1: Double Bell"></button>
+          <button class="project-dot" data-index="1" aria-label="Go to project 2: MammoSafe"></button>
+          <button class="project-dot" data-index="2" aria-label="Go to project 3: Health &amp; Nutrition"></button>
+          <button class="project-dot" data-index="3" aria-label="Go to project 4: Invoice Extractor"></button>
         </div>
       </div>
     </section>
@@ -903,7 +840,7 @@
     <div class="cursor-starlight-spark"></div>
   </div>
 
-  <script src="script.js?v=astrocursor1"></script>
+  <script src="script.js?v=release2"></script>
 </body>
 
 </html>
